@@ -1,0 +1,48 @@
+# Ignore Python virtual environment
+
+design-feedback-env/
+\*.env
+.env
+
+# Ignore Node.js dependencies
+
+node_modules/
+
+# Ignore compiled or build files
+
+dist/
+build/
+.cache/
+
+# Ignore data and temporary files
+
+_.log
+_.sqlite3
+
+# Ignore frontend build files
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Ignore Hugging Face cache if using transformers library
+
+cache/
+transformers_cache/
+hf_model_cache/
+
+# React app build files
+
+public/static/
+public/favicon.ico
+_.map # Source maps
+_.bundle.js # Bundled JavaScript files
+\*.chunk.js # Bundled code-split files
+
+# Logs
+
+logs/
+_.log
+npm-debug.log_
+yarn-debug.log*
+yarn-error.log*
