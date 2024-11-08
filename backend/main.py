@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
-from download_model import download_model
+from backend.download_model import download_model
 
 download_model() 
 
