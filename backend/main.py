@@ -6,7 +6,7 @@ from backend.download_model import download_model
 
 download_model() 
 
-from model_handler import generate_image_feedback
+from backend.model_handler import generate_image_feedback
 
 app = FastAPI()
 
