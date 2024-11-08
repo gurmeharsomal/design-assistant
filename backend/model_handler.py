@@ -22,16 +22,6 @@ DEFAULT_PROMPT = (
     " Does the design make sense?"
     " Do alignment and padding of elements fit best design practices?"
 )
-def load_image_from_url(url: str) -> bytes:
-    """Download an image from a URL and return as bytes."""
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise ValueError("Could not retrieve image from the URL.")
-    return response.content
-
-def load_image_from_base64(encoded_image: str) -> bytes:
-    """Decode a base64-encoded image to bytes."""
-    return base64.b64decode(encoded_image)
 
 def generate_image_feedback(image_data: bytes, user_prompt: Optional[str] = None) -> str:
     """
