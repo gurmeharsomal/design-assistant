@@ -1,46 +1,117 @@
-# Getting Started with Create React App
+# Design Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that provides design feedback on uploaded images using a fine-tuned VLM model. This project includes both a backend (FastAPI) for processing images and generating feedback and a frontend (React) for the user interface.
 
-## Available Scripts
+Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Requirements](#requirements)
+- [Setup and Installation](#setup-and-installation)
+- [Running Locally](#running-locally)
+- [Deployment](#deployment)
+- [Usage](#usage)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Upload images and receive constructive design feedback.
+- Option to add a custom prompt for specific feedback.
+- Responsive frontend built with React and TypeScript.
+- Machine learning model deployed via FastAPI backend.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- Backend: FastAPI, Python, Uvicorn
+- Frontend: React, TypeScript
+- Machine Learning: Hugging Face Transformers, custom fine-tuned model
+- Deployment: Render
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requirements
 
-### `npm run build`
+- Python 3.9
+- Node.js >= 14
+- Conda (optional but recommended for managing Python environments)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup and Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/your-username/design-assistant.git
+cd design-assistant
+```
 
-### `npm run eject`
+### Backend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Create a virtual environment (recommended with Conda):
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+conda create -n design-assistant-backend python=3.9
+conda activate design-assistant-backend
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Install backend dependencies:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+pip install -r backend/requirements.txt
+```
 
-## Learn More
+3. Model Download:
+   The model is automatically downloaded when the backend first runs. Note: The model processing may take some time to generate feedback, depending on its size and the available system resources.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Frontend Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+2. Install frontend dependencies:
+
+```bash
+npm install
+```
+
+## Running Locally
+
+### Start the Backend
+
+In the design-assistant root directory, activate the virtual environment if using Conda, and start the FastAPI server:
+
+```bash
+uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### Start the Frontend
+
+Open a new terminal, navigate to the frontend directory, and start the React development server:
+
+```bash
+cd frontend
+npm start
+```
+
+## Deployment
+
+To deploy this project on Render using render.yaml:
+
+1. Push all changes to your GitHub repository.
+2. Create a new Blueprint on Render:
+   - Go to the Render Dashboard.
+   - Select New > Blueprint (YAML) and connect your repository.
+3. Configure the services according to the render.yaml file.
+4. Set up any necessary environment variables for each service.
+
+**Note: The backend deployment requires more memory than the free plan provides so you will ne to upgrade.**
+
+After deployment, Render will provide URLs for both the frontend and backend services.
+
+## Usage
+
+1. Open the frontend in your browser (e.g., http://localhost:3000 or Render-provided URL).
+2. Upload an image (JPG/PNG) and enter an optional prompt.
+3. Submit the form to receive design feedback generated by the model.
+4. Check the results displayed on the page.
+
+**Note: The model may take some time to process each image and generate feedback due to its complexity and the resources available.**
