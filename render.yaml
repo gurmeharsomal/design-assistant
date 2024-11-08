@@ -3,7 +3,7 @@ services:
     name: design-assistant-backend
     env: python
     buildCommand: "pip install -r backend/requirements.txt"
-    startCommand: "./start.sh"
+    startCommand: "./backend/start.sh"
     plan: free
 
   - type: web
